@@ -58,9 +58,13 @@ kubectl get nodes
 ### 3. Trigger CI/CD Pipeline
 
 Push any change to main branch — GitHub Actions will automatically:
-- Build Docker image
-- Push to ECR
-- Deploy to EKS
+1. Build Docker image from Dockerfile
+2. Push image to AWS ECR
+3. Apply Kubernetes manifests via kubectl
+4. Deploy updated application to EKS cluster
+5. LoadBalancer exposes the application externally
+
+
 
 ### 4. Access the Application
 ```bash
@@ -79,3 +83,11 @@ terraform destroy
 
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
+
+## Future Improvements
+
+- Add Helm charts for more flexible Kubernetes deployments
+- Integrate ArgoCD for GitOps-based continuous delivery
+- Add monitoring and alerting with Prometheus and Grafana
+- Implement Horizontal Pod Autoscaler (HPA) for automatic scaling
+- Refactor Terraform into reusable modules
